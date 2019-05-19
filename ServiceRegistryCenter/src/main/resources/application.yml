@@ -1,0 +1,31 @@
+spring:
+  zipkin:
+    base-url: http://ServiceChainTrace/
+  sleuth:
+    sampler:
+      probability: 1
+  application:
+    name: ServiceRegistryCenter
+eureka:
+  instance:
+    prefer-ip-address: true
+  server:
+    enable-self-preservation: false
+---
+spring:
+  profiles: service-registry-center-1
+server:
+   port: 8081
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8082/eureka/
+---
+spring:
+  profiles: service-registry-center-2
+server:
+   port: 8082
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8081/eureka/

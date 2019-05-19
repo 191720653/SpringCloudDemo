@@ -1,0 +1,26 @@
+spring:
+  zipkin:
+    base-url: http://zipkin-server/
+  sleuth:
+    sampler:
+      probability: 1
+  application:
+    name: order-service
+---
+spring:
+  profiles: order-service-1
+server:
+  port: 8085
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8081/eureka/
+---
+spring:
+  profiles: order-service-2
+server:
+  port: 8086
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8082/eureka/

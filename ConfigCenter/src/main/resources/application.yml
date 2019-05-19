@@ -1,0 +1,28 @@
+spring:
+  profiles:
+    active: native
+  application:
+    name: ConfigCenter
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/191720653/springcloud-config
+          search-paths: config
+      label: master
+  zipkin:
+    base-url: http://ServiceChainTrace/
+  sleuth:
+    sampler:
+      probability: 1
+server:
+  port: 8083
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8081/eureka/

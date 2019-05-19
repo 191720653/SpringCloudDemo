@@ -1,0 +1,22 @@
+server:
+  port: 8089
+
+spring:
+  zipkin:
+    base-url: http://zipkin-server/
+  sleuth:
+    sampler:
+      probability: 1
+  application:
+    name: gateway-service
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8081/eureka/
+
+zuul:
+  routes:
+    order:
+      path: /order/**
+      serviceId: OrderService
